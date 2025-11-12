@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segunda Vida | Reutiliza, Dona, Ayuda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">🌱 Segunda Vida</h1>
+      <ul class="nav-links">
+        <li><a data-section="inicio">Inicio</a></li>
+        <li><a data-section="mision">Misión y Visión</a></li>
+        <li><a data-section="impacto">Impacto</a></li>
+        <li><a data-section="equipo">Equipo</a></li>
+        <li><a data-section="contacto">Contacto</a></li>
+      </ul>
+      <button class="menu-toggle">☰</button>
+    </nav>
+  </header>
+
+  <!-- ====== INICIO ====== -->
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <h2>Dale una <span>Segunda Vida</span> a tus cosas</h2>
+      <p>Transforma lo que ya no usas en oportunidades para otros.  
+      Dona, intercambia y ayuda a cuidar nuestro planeta.</p>
+      <a class="btn" data-section="como-funciona">Conoce Más</a>
+    </div>
+  </section>
+  
+  
+  <!-- ====== ¿Como funciona? ====== -->
+  <section id="como-funciona" class="info-section">
+  <h2 class="section-title">Conoce Más</h2>
+
+  <div class="galeria-container">
+    <!-- Galería -->
+    <div class="galeria">
+      <img id="galeria" src="https://picsum.photos/id/200/400/400" alt="Galería Segunda Vida">
+
+      <nav>
+        <ul>
+          <li><a onclick="cargarfoto(201)"><img src="https://picsum.photos/id/201/100/100" alt=""></a></li>
+          <li><a onclick="cargarfoto(202)"><img src="https://picsum.photos/id/202/100/100" alt=""></a></li>
+          <li><a onclick="cargarfoto(203)"><img src="https://picsum.photos/id/203/100/100" alt=""></a></li>
+          <li><a onclick="cargarfoto(204)"><img src="https://picsum.photos/id/204/100/100" alt=""></a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Cuadro de texto -->
+    <div class="normas">
+      <h3>📋 Normas y Reglas del Emprendimiento</h3>
+      <ul>
+        <li>Las donaciones deben estar en buen estado, limpias y funcionales.</li>
+        <li>No se permite la venta de productos dentro de la plataforma.</li>
+        <li>Las entregas deben realizarse en lugares seguros y públicos.</li>
+        <li>Promovemos el respeto, la empatía y la colaboración entre usuarios.</li>
+        <li>Todo usuario debe verificar que sus datos de contacto sean reales.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+  <!-- ====== MISION ====== -->
+  <section id="mision" class="info-section">
+    <h2 class="section-title">🌿 Misión y Visión</h2>
+
+    <div class="info-container">
+      <div class="info-block">
+        <h3 class="subtitle">Nuestra Misión</h3>
+        <p>
+          En <strong>Segunda Vida</strong>, creemos en el poder de la tecnología como herramienta para generar un cambio real.  
+          Nuestra misión es crear una plataforma digital que conecte a personas que desean donar o intercambiar ropa y artículos en buen estado con quienes más los necesitan.  
+          Promovemos una cultura de solidaridad, consumo responsable y respeto por el medio ambiente.  
+          Queremos que cada objeto tenga la oportunidad de seguir ayudando, disminuyendo el desperdicio y fomentando una economía circular que beneficie a toda la comunidad.
+        </p>
+      </div>
+
+      <div class="info-block">
+        <h3 class="subtitle">Nuestra Visión</h3>
+        <p>
+          Soñamos con construir una comunidad más consciente, colaborativa y sustentable, donde compartir sea un hábito cotidiano.  
+          Aspiramos a que <strong>Segunda Vida</strong> se consolide como un punto de encuentro para quienes buscan ayudar, reducir su impacto ambiental y generar cambios significativos desde lo local.  
+          Visualizamos un futuro donde cada persona entienda que los pequeños gestos pueden transformar el entorno social, económico y ecológico de nuestras ciudades.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== IMPACTO ====== -->
+  <section id="impacto" class="impacto">
+    <h2 class="section-title">💚 Impacto del Proyecto</h2>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <h3>🌎 Ambiental</h3>
+        <p>Reducimos los desechos textiles y promovemos la reutilización de objetos, disminuyendo la huella ecológica del consumo.</p>
+      </div>
+      <div class="impact-card">
+        <h3>🤝 Social</h3>
+        <p>Conectamos a personas que desean donar con quienes más lo necesitan, fomentando la solidaridad y el apoyo mutuo.</p>
+      </div>
+      <div class="impact-card">
+        <h3>💡 Económico</h3>
+        <p>Ayudamos a familias a obtener bienes necesarios sin gastar, impulsando la economía circular y la inclusión.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== EQUIPO ====== -->
+  <section id="equipo" class="equipo">
+    <h2 class="section-title"> Nuestro Equipo</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <h3>Emily Sofía Castro Fragoso</h3>
+        <p>Líder del proyecto y responsable del desarrollo web.</p>
+      </div>
+      <div class="team-card">
+        <h3>Ángel Leonel Escandón Gutiérrez</h3>
+        <p>Coordinador técnico y diseño del prototipo.</p>
+      </div>
+      <div class="team-card">
+        <h3>Gabriela Jazmín Rodríguez López</h3>
+        <p>Encargada de difusión y redes sociales.</p>
+      </div>
+      <div class="team-card">
+        <h3>Ángel Leonel Quiroz González</h3>
+        <p>Encargado de logística y alianzas comunitarias.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACTO ====== -->
+  <section id="contacto">
+    <h2 class="section-title">📬 Contáctanos</h2>
+    <p style="text-align:center">📧 <a href="mailto:emilysofia.castrofragozo@gmail.com">emilysofia.castrofragozo@gmail.com</a></p> 
+    <p style="text-align:center">📍 Guadalajara, Jalisco</p>
+    <p style="text-align:center">📞 +52 33 2586 1122</p>
+    <p style="text-align:center">&copy; 2025 Segunda Vida - Promoviendo el cambio con cada donación.</p>
+  </section>
+
+  <footer>
+    <p>🌱 Segunda Vida</p>
+  </footer>
+
+</body>
+</html>

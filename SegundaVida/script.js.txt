@@ -1,0 +1,25 @@
+// --- Menú responsive ---
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  // --- Cambio de secciones ---
+  const links = document.querySelectorAll('[data-section]');
+  const sections = document.querySelectorAll('section');
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      const target = link.getAttribute('data-section');
+      sections.forEach(sec => {
+        sec.style.display = (sec.id === target) ? 'block' : 'none';
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // --- Galería de imágenes ---
+  function cargarfoto(img) {
+    document.getElementById("galeria").src = "https://picsum.photos/id/" + img + "/400/400";
+  }
