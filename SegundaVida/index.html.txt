@@ -1,11 +1,346 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Segunda Vida | Reutiliza, Dona, Ayuda</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      color: #333;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ====== Navegación ====== */
+    header {
+      background-color: #2b7a4b;
+      color: white;
+      padding: 15px 30px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: #ffdd57;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+    }
+
+    /* ====== Hero Section ====== */
+    .hero {
+      background: url('https://i.pinimg.com/1200x/f3/9d/c2/f39dc23820402a2884ac434419506ddf.jpg') no-repeat center/cover;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px 50px;
+      border-radius: 20px;
+      max-width: 700px;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 15px;
+    }
+
+    .hero span {
+      color: #9be564;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 28px;
+      background-color: #90be6d;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #b5e48c;
+    }
+
+    /* ====== Secciones ====== */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #2b7a4b;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    section {
+      display: none;
+      padding: 70px 20px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    #inicio {
+      display: block;
+      padding: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .info-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .info-block {
+      margin-bottom: 40px;
+    }
+
+    .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #26734d;
+      margin-bottom: 10px;
+    }
+
+    .info-block p {
+      font-size: 1.05rem;
+      text-align: justify;
+      color: #444;
+    }
+
+    /* ====== Impacto ====== */
+    .impacto {
+      background-color: #eaf7ef;
+      text-align: center;
+    }
+
+    .impact-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .impact-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 25px;
+      width: 270px;
+      transition: transform 0.3s;
+    }
+
+    .impact-card:hover {
+      transform: scale(1.05);
+    }
+
+    /* ====== Equipo ====== */
+    .equipo {
+      background-color: #f4faf5;
+      text-align: center;
+    }
+
+    .team-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .team-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 220px;
+      transition: transform 0.3s;
+    }
+
+    .team-card:hover {
+      transform: scale(1.05);
+    }
+
+    /* ====== Galería y Normas ====== */
+    .galeria-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .galeria {
+      text-align: center;
+    }
+
+    #galeria {
+      width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    .galeria nav ul {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .galeria nav ul li a img {
+      width: 90px;
+      border-radius: 8px;
+      opacity: 0.6;
+      transition: 0.3s;
+      filter: grayscale(50%);
+    }
+
+    .galeria nav ul li a img:hover {
+      opacity: 1;
+      margin-top: -5px;
+      filter: grayscale(0%);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .normas {
+      max-width: 400px;
+      background-color: #f4faf5;
+      border-left: 6px solid #2b7a4b;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .normas h3 {
+      color: #26734d;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 10px;
+    }
+
+    .normas ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .normas li {
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    /* ====== Footer ====== */
+    footer {
+      background-color: #2b7a4b;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: #ffdd57;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #2b7a4b;
+        width: 100%;
+        padding: 20px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+      }
+
+      .hero-content {
+        padding: 30px;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -32,40 +367,38 @@
     </div>
   </section>
   
-  
   <!-- ====== ¿Como funciona? ====== -->
   <section id="como-funciona" class="info-section">
-  <h2 class="section-title">Conoce Más</h2>
+    <h2 class="section-title">Conoce Más</h2>
 
-  <div class="galeria-container">
-    <!-- Galería -->
-    <div class="galeria">
-      <img id="galeria" src="https://picsum.photos/id/200/400/400" alt="Galería Segunda Vida">
+    <div class="galeria-container">
+      <!-- Galería -->
+      <div class="galeria">
+        <img id="galeria" src="https://picsum.photos/id/200/400/400" alt="Galería Segunda Vida">
 
-      <nav>
+        <nav>
+          <ul>
+            <li><a onclick="cargarfoto(201)"><img src="https://picsum.photos/id/201/100/100" alt=""></a></li>
+            <li><a onclick="cargarfoto(202)"><img src="https://picsum.photos/id/202/100/100" alt=""></a></li>
+            <li><a onclick="cargarfoto(203)"><img src="https://picsum.photos/id/203/100/100" alt=""></a></li>
+            <li><a onclick="cargarfoto(204)"><img src="https://picsum.photos/id/204/100/100" alt=""></a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Cuadro de texto -->
+      <div class="normas">
+        <h3>📋 Normas y Reglas del Emprendimiento</h3>
         <ul>
-          <li><a onclick="cargarfoto(201)"><img src="https://picsum.photos/id/201/100/100" alt=""></a></li>
-          <li><a onclick="cargarfoto(202)"><img src="https://picsum.photos/id/202/100/100" alt=""></a></li>
-          <li><a onclick="cargarfoto(203)"><img src="https://picsum.photos/id/203/100/100" alt=""></a></li>
-          <li><a onclick="cargarfoto(204)"><img src="https://picsum.photos/id/204/100/100" alt=""></a></li>
+          <li>Las donaciones deben estar en buen estado, limpias y funcionales.</li>
+          <li>No se permite la venta de productos dentro de la plataforma.</li>
+          <li>Las entregas deben realizarse en lugares seguros y públicos.</li>
+          <li>Promovemos el respeto, la empatía y la colaboración entre usuarios.</li>
+          <li>Todo usuario debe verificar que sus datos de contacto sean reales.</li>
         </ul>
-      </nav>
+      </div>
     </div>
-
-    <!-- Cuadro de texto -->
-    <div class="normas">
-      <h3>📋 Normas y Reglas del Emprendimiento</h3>
-      <ul>
-        <li>Las donaciones deben estar en buen estado, limpias y funcionales.</li>
-        <li>No se permite la venta de productos dentro de la plataforma.</li>
-        <li>Las entregas deben realizarse en lugares seguros y públicos.</li>
-        <li>Promovemos el respeto, la empatía y la colaboración entre usuarios.</li>
-        <li>Todo usuario debe verificar que sus datos de contacto sean reales.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- ====== MISION ====== -->
   <section id="mision" class="info-section">
@@ -114,7 +447,7 @@
 
   <!-- ====== EQUIPO ====== -->
   <section id="equipo" class="equipo">
-    <h2 class="section-title"> Nuestro Equipo</h2>
+    <h2 class="section-title">👥 Nuestro Equipo</h2>
     <div class="team-grid">
       <div class="team-card">
         <h3>Emily Sofía Castro Fragoso</h3>
@@ -148,5 +481,31 @@
     <p>🌱 Segunda Vida</p>
   </footer>
 
+  <script>
+    // --- Menú responsive ---
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // --- Cambio de secciones ---
+    const links = document.querySelectorAll('[data-section]');
+    const sections = document.querySelectorAll('section');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        const target = link.getAttribute('data-section');
+        sections.forEach(sec => {
+          sec.style.display = (sec.id === target) ? 'block' : 'none';
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // --- Galería de imágenes ---
+    function cargarfoto(img) {
+      document.getElementById("galeria").src = "https://picsum.photos/id/" + img + "/400/400";
+    }
+  </script>
 </body>
 </html>
